@@ -23,7 +23,7 @@ export default function Browse({ onBookGig }) {
         sort: sortOption
       });
 
-      const response = await fetch(`http://localhost:5000/api/gigs?${query.toString()}`);
+      const response = await fetch(`${API_BASE_URL}/api/gigs?${query.toString()}`);
       if (!response.ok) throw new Error('Failed to load marketplace gigs');
       
       const data = await response.json();
