@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import GigCard from '../components/GigCard';
+import { API_BASE_URL } from '../config';
 
 const CATEGORIES = ['All', 'Design', 'Coding', 'Video', 'Writing', 'Marketing', 'Audio'];
 

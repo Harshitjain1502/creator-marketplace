@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useUser } from '../context/UserContext';
+import { API_BASE_URL } from '../config';
 
 const CATEGORIES = ['Design', 'Coding', 'Video', 'Writing', 'Marketing', 'Audio'];
 
@@ -29,7 +30,7 @@ export default function PostGig({ onGigPosted }) {
     }
 
     try {
-      const response = await fetch('http://localhost:5000/api/gigs', {
+      const response = await fetch(`${API_BASE_URL}/api/gigs`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

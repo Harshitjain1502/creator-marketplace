@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useUser } from '../context/UserContext';
 import StatusBadge from '../components/StatusBadge';
+import { API_BASE_URL } from '../config';
 
 export default function CreatorDashboard() {
   const { currentUser } = useUser();
@@ -10,7 +11,7 @@ export default function CreatorDashboard() {
   const fetchCreatorBookings = async () => {
     setLoading(true);
     try {
-      const res = await fetch(`http://localhost:5000/api/bookings?creatorId=${currentUser.id}`);
+      const res = await fetch(`${API_BASE_URL}/api/bookings?creatorId=${currentUser.id}`);
       const data = await res.json();
       setRequests(data);
     } catch (err) {
@@ -26,7 +27,7 @@ export default function CreatorDashboard() {
 
   const handleStatusUpdate = async (bookingId, newStatus) => {
     try {
-      const res = await fetch(`http://localhost:5000/api/bookings/${bookingId}/status`, {
+      const res = await fetch(`${API_BASE_URL}/api/bookings/${bookingId}/status`, {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ status: newStatus })

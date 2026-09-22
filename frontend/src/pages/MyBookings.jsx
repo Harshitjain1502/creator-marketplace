@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useUser } from '../context/UserContext';
 import StatusBadge from '../components/StatusBadge';
+import { API_BASE_URL } from '../config';
 
 export default function MyBookings({ onBrowseMore }) {
   const { currentUser } = useUser();
@@ -10,7 +11,7 @@ export default function MyBookings({ onBrowseMore }) {
   const fetchMyBookings = async () => {
     setLoading(true);
     try {
-      const res = await fetch(`http://localhost:5000/api/bookings?clientId=${currentUser.id}`);
+      const res = await fetch(`${API_BASE_URL}/api/bookings?clientId=${currentUser.id}`);
       const data = await res.json();
       setMyBookings(data);
     } catch (err) {

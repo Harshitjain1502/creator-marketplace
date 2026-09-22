@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useUser } from '../context/UserContext';
+import { API_BASE_URL } from '../config';
 
 export default function BookingModal({ gig, onClose, onBookingSuccess }) {
   const { currentUser } = useUser();
@@ -18,7 +19,7 @@ export default function BookingModal({ gig, onClose, onBookingSuccess }) {
     }
 
     try {
-      const response = await fetch('http://localhost:5000/api/bookings', {
+      const response = await fetch(`${API_BASE_URL}/api/bookings`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
